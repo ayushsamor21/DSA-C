@@ -19,6 +19,7 @@ struct Node* append(struct Node* head, int value){
         head = newNode;
         return head;
     }
+    
     struct Node* temp;                       
     temp = head;
     while (temp->next != NULL){

@@ -53,11 +53,15 @@ void insertAfterValue(struct Node* head){
     printf("Please enter the new value: ");
     scanf("%d", &newValue);
 
+    struct Node* newNode = createNode(newValue);
+    if(head == NULL){
+        printf("Error in the operation!!");
+    }
+  
     struct Node* temp = head;
 
     while (temp != NULL){
         if (temp->data == target){
-            struct Node* newNode = createNode(newValue);
             newNode->next = temp->next;
             temp->next = newNode;
             return;

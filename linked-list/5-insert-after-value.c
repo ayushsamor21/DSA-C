@@ -53,18 +53,18 @@ void insertAfterValue(struct Node* head){
     printf("Please enter the new value: ");
     scanf("%d", &newValue);
 
-    struct Node* newNode = createNode(newValue);
     struct Node* temp = head;
 
     while (temp != NULL){
         if (temp->data == target){
+            struct Node* newNode = createNode(newValue);
             newNode->next = temp->next;
             temp->next = newNode;
             return;
         }
         temp = temp->next;
     }
-    printf("The target value %d does not exist", target);
+    printf("The target value %d does not exist\n", target);
 }
 
 int main(){

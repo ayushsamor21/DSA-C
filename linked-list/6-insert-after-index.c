@@ -55,9 +55,14 @@ void insertAfterIndex(struct Node* head){
 
     struct Node* temp = head;
 
+    struct Node* newNode = createNode(newValue);
+    if(head == NULL){
+        printf("Error in the operation!!");
+        return head;
+    }
+
     while (temp != NULL){
         if (index == targetIndex){
-            struct Node* newNode = createNode(newValue);
             newNode->next = temp->next;
             temp->next = newNode;
             return;

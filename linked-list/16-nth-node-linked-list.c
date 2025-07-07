@@ -41,31 +41,35 @@ void printLinkedList(struct Node* head){
     printf("\n");
 }
 
-void kthNodePrinting(struct Node* head){
+void nthNodePrinting(struct Node* head){
     int targetIndex, currentIndex = 0;
     bool isPresent = false;
     printf("Please enter the target Index: ");
     scanf("%d", &targetIndex);
 
-    if(head == NULL){
-        printf("The Kth index : -1\n");
+    if (head == NULL){
+        printf("The Nth index : -1\n");
+        return;
+    }
+
+    if (targetIndex < 0) {
+        printf("The Nth index : -1\n");
         return;
     }
     struct Node* temp = head;
-    while(temp != NULL){
-        if(targetIndex == currentIndex){
-            printf("Value %d at kth index %d\n", temp->data, currentIndex);
+    while (temp != NULL){
+        if (targetIndex == currentIndex){
+            printf("Value %d at Nth index %d\n", temp->data, currentIndex);
             isPresent = true;
             break;
         }
         temp = temp->next;
         currentIndex++;
     }
-    if(!isPresent){
-        printf("The Kth index : -1\n");
+    if (!isPresent){
+        printf("The Nth index : -1\n");
     }
 }
-
 
 void freeList(struct Node* head){
     struct Node* temp;
@@ -89,6 +93,6 @@ int main(){
         head = append(head, num);
     }
     printLinkedList(head);
-    kthNodePrinting(head);
+    nthNodePrinting(head);
     freeList(head);
 }

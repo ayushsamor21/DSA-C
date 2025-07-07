@@ -20,6 +20,7 @@ void printTree(struct Tree* root){
     if(root == NULL){
         return;
     }
+    
     printTree(root->left);
     printTree(root->right);
     printf("%d->", root->data);

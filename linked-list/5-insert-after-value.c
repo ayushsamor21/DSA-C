@@ -59,7 +59,6 @@ void insertAfterValue(struct Node* head){
     }
   
     struct Node* temp = head;
-
     while (temp != NULL){
         if (temp->data == target){
             newNode->next = temp->next;

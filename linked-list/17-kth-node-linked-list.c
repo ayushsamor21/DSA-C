@@ -51,7 +51,7 @@ struct Node* kthNode(struct Node* head){
     }
 
     if (kthIndex <= 0) {
-        printf("Invalid K value. Must be greater than 0.\n");
+        printf("Invalid K value, Must be greater than 0.\n");
         return NULL;
     }
 
@@ -70,6 +70,7 @@ struct Node* kthNode(struct Node* head){
 
 void freeList(struct Node* head){
     struct Node* temp;
+
     while (head != NULL){
         temp = head;
         head = head->next;

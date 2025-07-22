@@ -40,35 +40,45 @@ void printLinkedList(struct Node* head){
     printf("\n");
 }
 
-struct Node* deleteNodeByValue(struct Node* head, int targetValue){
+struct Node* deleteNodeByIndex(struct Node* head, int targetIndex){
     struct Node* temp = head;
     struct Node* previous = NULL;
+    int currentIndex = 0;
 
     //Linked List is empty
     if(head == NULL){
-        printf("Error in operation!!");
+        printf("Error in operation!!\n");
+        return head;
+    }
+
+    if (targetIndex < 0){
+        printf("Invalid Index!!\n");
         return head;
     }
 
     //deleting head
-    if (head->data == targetValue){
+    if (targetIndex == 0){
         struct Node* newHead = head->next;
+        free(temp);
         return newHead;
     }
     
     //Traverse List
-    while(temp != NULL && temp->data != targetValue){
+    while(temp != NULL && currentIndex != targetIndex){
         previous = temp;
         temp = temp->next;
+        currentIndex++;
     }
 
     //value not found
-    if (temp == NULL){
+    if (temp == NULL) {
+        printf("Index out of bounds!\n");
         return head;
     }
     
     //Skip case
     previous->next = temp->next;
+    free(temp);
     return head;
 }
 
@@ -82,7 +92,7 @@ void freeList(struct Node* head){
 }
 
 int main(){
-    int times, num, targetValue;
+    int times, num, targetIndex;
 
     printf("Please enter the number of elements : ");
     scanf("%d", &times);
@@ -96,11 +106,11 @@ int main(){
     printf("Original linked list: ");
     printLinkedList(head);
 
-    printf("Please enter the value you want to delete: ");
-    scanf("%d", &targetValue);
+    printf("Please enter the index you want to delete: ");
+    scanf("%d", &targetIndex);
 
     printf("The new linked list: ");
-    head = deleteNodeByValue(head, targetValue);
+    head = deleteNodeByIndex(head, targetIndex);
     printLinkedList(head);
     freeList(head);
 }
